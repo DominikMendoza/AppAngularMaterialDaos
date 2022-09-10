@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class NewsApiService {
   apiKey = 'fecf4feeffa64e4da682e7d268612ce5';
+  urlb = "https://newsapi.org/v2/top-headlines";
   constructor(private http: HttpClient) { }
 
   initArticles() {
@@ -12,10 +13,10 @@ export class NewsApiService {
   }
 
   getSources() {
-    return this.http.get(`https://newsapi.org/v2/top-headlines/sources?language=en&apiKey=${this.apiKey}`);
+    return this.http.get(`${this.urlb}/sources?language=en&apiKey=${this.apiKey}`);
   }
 
   getArticlesBySourceId(sourceId: String) {
-    return this.http.get(`https://newsapi.org/v2/top-headlines?sources=${sourceId}&apiKey=${this.apiKey}`);
+    return this.http.get(`${this.urlb}?sources=${sourceId}&apiKey=${this.apiKey}`);
   }
 }
